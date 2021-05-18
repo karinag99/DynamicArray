@@ -21,7 +21,7 @@ private:
 public:
     Buffer();
     Buffer(size_t);
-//    Buffer(size_t, const Buffer<Type>&);
+    Buffer(size_t, const Buffer<Type>&);
     Buffer(size_t, size_t, const Buffer<Type>&);
     Buffer(const Buffer<Type>&) = delete;
     Buffer<Type>& operator=(const Buffer<Type>&) = delete;
@@ -77,13 +77,13 @@ Buffer<Type>::Buffer(size_t size) : data(new Type[size]), allocated(size)
 
 }
 
-/*
+
 template <class Type>
 Buffer<Type>::Buffer(size_t size, const Buffer<Type>& other) : data(new Type[size]), allocated(size)
 {
     copyFrom(size, other.allocated, other);
 }
-*/
+
 
 template <class Type>
 Buffer<Type>::Buffer(size_t size, size_t elementsToCopy, const Buffer<Type>& other) : data(new Type[size]), allocated(size)
@@ -164,6 +164,7 @@ private:
     size_t used;
 
 private:
+    void resizeBuffer();
     void resizeBuffer(size_t size, size_t elementsToCopy);
 
 public:
@@ -196,6 +197,14 @@ public:
     void resize(size_t, Type value = Type());
     void reserve(size_t);  
 };
+
+template <class Type>
+void DynamicArray<Type>::resizeBuffer()
+{
+    Buffer<Type> temp(buffer.size() * 2, buffer);
+    bufer.swap(temp;)
+}
+
 
 template <class Type>
 void DynamicArray<Type>::resizeBuffer(size_t size, size_t elementsToCopy)
@@ -240,7 +249,7 @@ template <class Type>
 void DynamicArray<Type>::push_back(const Type& elem)
 {
     if(used >= buffer.size())
-        resizeBuffer(buffer.size() * 2, buffer.size());
+        resizeBuffer();
 
     buffer[used++] = elem;
 }
