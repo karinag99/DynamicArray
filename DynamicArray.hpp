@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <cassert>
 
-#include "Buffer.cpp"
+#include "Buffer.hpp"
 
 /**
  * @brief DynamicArray class is a class template that stores elements of a given type in a linear arrangement and

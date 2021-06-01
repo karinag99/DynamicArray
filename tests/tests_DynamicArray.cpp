@@ -1,5 +1,5 @@
 #include "catch.hpp"
-#include "../DynamicArray.cpp"
+#include "../DynamicArray.hpp"
 
 #include <algorithm>
 

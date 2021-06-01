@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-#include "../Buffer.cpp"
+#include "../Buffer.hpp"
 
 #include <algorithm>
 
